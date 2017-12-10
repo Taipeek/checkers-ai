@@ -274,7 +274,7 @@ def newBoard():
 #         print ' | '.join(board[i]), '|', '\t|', ' | '.join(numberedBoard[i]), '|'
 #         print '-' * 33, '\t', '-' * 41
 numBoards = 0
-maxStateCount = 10000
+maxStateCount = 100000
 out = np.zeros((maxStateCount, 8, 8))
 
 
@@ -321,7 +321,7 @@ def playGame(p1, p2, verbose, t=150):
     while isAnyMovePossible(board, currentColor) == True:
         tempBoard = deepcopy(board)
         t1 = time.time()
-        nextMove = p1(tempBoard, currentColor, p1time, movesRemaining)
+        nextMove = p1(tempBoard, currentColor, p1time, movesRemaining,0.6)
         t2 = time.time()
         p1time = p1time - (t2 - t1)
         p1realTime = p1realTime - (t2 - t1)

@@ -61,14 +61,14 @@ def evaluation(board, color, depth, turn, opponentColor, alpha, beta):
                 value -= 3
         return value
 
-def nextMove(board, color, time, movesRemaining):
+def nextMove(board, color, time, movesRemaining,prob):
     moves = getAllPossibleMoves(board, color)
     opponentColor = gamePlay.getOpponentColor(color)
-    depth = 3
+    depth = 1
     best = None
     alpha = None
     beta = float("inf")
-    if np.random.random() > 0.95:
+    if np.random.random() > prob:
         return moves[np.random.randint(len(moves))]
     for move in moves: # this is the max turn(1st level of minimax), so next should be min's turn
         newBoard = deepcopy(board)
