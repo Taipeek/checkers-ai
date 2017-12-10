@@ -3,6 +3,7 @@ import time
 import getopt
 import numpy as np
 from copy import deepcopy
+from keras.models import load_model
 
 
 def getOpponentColor(color):
@@ -377,13 +378,14 @@ def getBoardFromddd(ddd, index):
 
 
 if __name__ == "__main__":
-    global numBoards, maxStateCount
+    global numBoards, maxStateCount, model
     try:
         optlist, args = getopt.getopt(sys.argv[1:], 'vt:')
     except getopt.error:
         print "Usage: python %s {-v} {-t time} player1 player2" % (sys.argv[0])
         exit()
 
+    model = load_model('my_model.h5')
     states = getStatesFromCSV()
     results = np.zeros(maxStateCount)
     while numBoards < maxStateCount:
