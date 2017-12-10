@@ -274,7 +274,7 @@ def newBoard():
 #         print ' | '.join(board[i]), '|', '\t|', ' | '.join(numberedBoard[i]), '|'
 #         print '-' * 33, '\t', '-' * 41
 numBoards = 0
-maxStateCount = 100
+maxStateCount = 10000
 out = np.zeros((maxStateCount, 8, 8))
 
 

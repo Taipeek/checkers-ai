@@ -1,6 +1,7 @@
 # Name      : Vikas Palakurthi
 # User ID   : vpalakur
 import gamePlay
+import numpy as np
 from copy import deepcopy
 from getAllPossibleMoves import getAllPossibleMoves
 
@@ -63,10 +64,12 @@ def evaluation(board, color, depth, turn, opponentColor, alpha, beta):
 def nextMove(board, color, time, movesRemaining):
     moves = getAllPossibleMoves(board, color)
     opponentColor = gamePlay.getOpponentColor(color)
-    depth = 5
+    depth = 3
     best = None
     alpha = None
     beta = float("inf")
+    if np.random.random() > 0.95:
+        return moves[np.random.randint(len(moves))]
     for move in moves: # this is the max turn(1st level of minimax), so next should be min's turn
         newBoard = deepcopy(board)
         gamePlay.doMove(newBoard,move)
