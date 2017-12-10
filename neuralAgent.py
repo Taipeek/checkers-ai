@@ -40,8 +40,19 @@ def evaluation(board, color, depth, turn, opponentColor, alpha, beta):
         return opti  # opti will contain the best value for player in MAX turn and worst value for player in MIN turn
 
     else:  # Comes here for the last level i.e leaf nodes
-
-        value = model.predict(Xtrain)[:, 0]
+        state = np.zeros((1, 8, 8, 4))
+        for i in range(0, 8):
+            for j in range(0, 8):
+                if board[i][j] == 'r':
+                    state[0, i, j, 0] = 1
+                elif board[i][j] == 'R':
+                    state[0, i, j, 2] = 1
+                elif board[i][j] == 'w':
+                    state[0, i, j, 1] = 1
+                elif board[i][j] == 'W':
+                    state[0, i, j, 3] = 1
+        value = model.predict(state)[:, 0]
+        print value
         return value
 
 

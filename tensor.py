@@ -27,7 +27,7 @@ for i in range(numObservations):
         elif j == 2:
             X[i, :, :, j] = data[i, :, :] == 2 * np.ones((8, 8))
         elif j == 3:
-            X[i, :, :, j] = data[i, :, :] == 2 * np.ones((8, 8))
+            X[i, :, :, j] = data[i, :, :] == -2 * np.ones((8, 8))
 
 trainMask = np.zeros(X.shape[0])
 for i in range(len(trainMask)):
